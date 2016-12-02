@@ -1,0 +1,35 @@
+{
+  "name": "advent-of-code-2016",
+  "version": "0.0.0",
+  "description": "advent-of-code-2016",
+  "scripts": {
+    "lint": "eslint ./ --ignore-pattern node_modules/",
+    "test": "npm run lint && nyc ava"
+  },
+  "repository": "dustinspecker/advent-of-code-2016",
+  "keywords": [],
+  "author": "Dustin Specker <DustinSpecker@DustinSpecker.com> (http://dustinspecker.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "eslint": "^3.11.1",
+    "eslint-config-dustinspecker": "^1.4.1",
+    "eslint-plugin-no-use-extend-native": "^0.3.12",
+    "eslint-plugin-xo": "^1.0.0",
+    "nyc": "^10.0.0"
+  },
+  "ava": {
+    "files": [
+      "*/*test.js"
+    ]
+  },
+  "nyc": {
+    "exclude": [
+      "node_modules",
+      "*/*test.js"
+    ]
+  }
+}

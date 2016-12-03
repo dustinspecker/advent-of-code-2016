@@ -2,12 +2,12 @@ const {EOL} = require('os')
 const m = require('.')
 const test = require('ava')
 
-const {getCode, parsePath} = m
+const {getFirstCode, parsePath} = m
 
-test('getCode', t => {
+test('getFirstCode', t => {
   const path = `ULL${EOL}RRDDD${EOL}LURDL${EOL}UUUUD${EOL}`
 
-  t.is(getCode(path), '1985')
+  t.is(getFirstCode(path), '1985')
 })
 
 test('parsePath', t => {

@@ -8,10 +8,24 @@ const letterDirection = {
   L: 'left'
 }
 
-module.exports = {
-  getCode(path) {
-    const steps = module.exports.parsePath(path)
+const getCode = (path, startingNode) => {
+  const steps = module.exports.parsePath(path)
+  let currentNode = startingNode
+    , code = ''
 
+  for (const step of steps) {
+    for (const instruction of step) {
+      currentNode = currentNode.move(instruction)
+    }
+
+    code += currentNode.key
+  }
+
+  return code
+}
+
+module.exports = {
+  getFirstCode(path) {
     const n1 = new Node('1')
     const n2 = new Node('2')
     const n3 = new Node('3')
@@ -55,18 +69,7 @@ module.exports = {
     n9.up = n6
     n9.left = n8
 
-    let currentNode = n5
-      , code = ''
-
-    for (const step of steps) {
-      for (const instruction of step) {
-        currentNode = currentNode.move(instruction)
-      }
-
-      code += currentNode.key
-    }
-
-    return code
+    return getCode(path, n5)
   },
   parsePath(path) {
     const steps = path.split(EOL)

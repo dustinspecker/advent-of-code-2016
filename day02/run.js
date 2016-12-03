@@ -7,4 +7,5 @@ fs.readFile('./day02/input.txt', (err, data) => {
   }
 
   console.log(m.getFirstCode(data.toString()))
+  console.log(m.getSecondCode(data.toString()))
 })

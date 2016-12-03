@@ -51,6 +51,30 @@ module.exports = {
 
     return Math.abs(x) + Math.abs(y)
   },
+  numberOfBlocksAwayForLocationVisitedTwice(path) {
+    const steps = module.exports.parsePath(path)
+
+    const visitedNodes = new Set()
+
+    let currentDirection = 'north'
+      , x = 0
+      , y = 0
+
+    visitedNodes.add('x0y0')
+
+    for (const {turningDirection, blocks} of steps) {
+      currentDirection = module.exports.getNewDirection(currentDirection, turningDirection)
+      for (let i = 0; i < blocks; i++) {
+        ({x, y} = module.exports.getNewXY(x, y, currentDirection))
+        const node = `x${x}y${y}`
+        if (visitedNodes.has(node)) {
+          return Math.abs(x) + Math.abs(y)
+        }
+
+        visitedNodes.add(node)
+      }
+    }
+  },
   parsePath(path) {
     if (!path) {
       return []

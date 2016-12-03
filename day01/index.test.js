@@ -55,3 +55,7 @@ test('numberOfBlocksAway', t => {
   t.is(numberOfBlocksAway('R2, R2, R2'), 2)
   t.is(numberOfBlocksAway('R5, L5, R5, R3'), 12)
 })
+
+test('numberOfBlocksAwayForLocationVisitedTwice', t => {
+  t.is(numberOfBlocksAwayForLocationVisitedTwice('R8, R4, R4, R8'), 4)
+})

@@ -7,4 +7,5 @@ fs.readFile('./day01/input.txt', (err, data) => {
   }
 
   console.log(m.numberOfBlocksAway(data.toString()))
+  console.log(m.numberOfBlocksAwayForLocationVisitedTwice(data.toString()))
 })

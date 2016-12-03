@@ -1,8 +1,8 @@
 const {EOL} = require('os')
 
 module.exports = {
-  numberOfValidTriangles(dimensions) {
-    return module.exports.parseDimensionsByRow(dimensions)
+  numberOfValidTriangles(dimensions, dimensionsParser) {
+    return dimensionsParser(dimensions)
       .filter(module.exports.triangleIsValid)
       .length
   },

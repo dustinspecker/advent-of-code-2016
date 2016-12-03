@@ -6,7 +6,7 @@ const {parseDimensionsByRow, numberOfValidTriangles, triangleIsValid} = m
 
 test('numberOfValidTriangles', t => {
   const dimensions = ` 33 42 56${EOL}5 4 7${EOL}  10 5 25`
-  t.is(numberOfValidTriangles(dimensions), 2)
+  t.is(numberOfValidTriangles(dimensions, parseDimensionsByRow), 2)
 })
 
 test('parseDimensionsByRow', t => {

@@ -6,5 +6,5 @@ fs.readFile('./day03/input.txt', (err, data) => {
     throw err
   }
 
-  console.log(m.numberOfValidTriangles(data.toString()))
+  console.log(m.numberOfValidTriangles(data.toString(), m.parseDimensionsByRow))
 })

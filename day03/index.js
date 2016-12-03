@@ -2,11 +2,11 @@ const {EOL} = require('os')
 
 module.exports = {
   numberOfValidTriangles(dimensions) {
-    return module.exports.parseDimensions(dimensions)
+    return module.exports.parseDimensionsByRow(dimensions)
       .filter(module.exports.triangleIsValid)
       .length
   },
-  parseDimensions(dimensions) {
+  parseDimensionsByRow(dimensions) {
     return dimensions.split(EOL)
       .map(dimension =>
         dimension.split(/\s+/)

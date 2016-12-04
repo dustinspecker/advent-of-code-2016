@@ -26,13 +26,14 @@ module.exports = {
       return mapping
     }, {})
   },
-  sumValidRooms(rooms) {
-    const validRooms = module.exports.parseRooms(rooms)
+  getValidRooms(rooms) {
+    return module.exports.parseRooms(rooms)
       .filter(({encryptedName, checksum}) =>
         module.exports.top5Letters(encryptedName) === checksum
       )
-
-    return validRooms.reduce((total, {sectorId}) =>
+  },
+  sumValidRooms(rooms) {
+    return module.exports.getValidRooms(rooms).reduce((total, {sectorId}) =>
       total + sectorId
     , 0)
   },

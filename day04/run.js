@@ -7,4 +7,5 @@ fs.readFile('./day04/input.txt', (err, data) => {
   }
 
   console.log(m.sumValidRooms(data.toString()))
+  console.log(m.decryptRooms(data.toString()))
 })

@@ -2,7 +2,11 @@ const {EOL} = require('os')
 const m = require('.')
 const test = require('ava')
 
-const {getLetterMapping, parseRooms, sumValidRooms, top5Letters} = m
+const {decryptName, getLetterMapping, parseRooms, shiftCharacter, sumValidRooms, top5Letters} = m
+
+test('decryptName', t => {
+  t.is(decryptName('qzmt-zixmtkozy-ivhz', 343), 'very encrypted name')
+})
 
 test('getLetterMapping', t => {
   const expected = {
@@ -32,6 +36,13 @@ test('parseRooms', t => {
 
   const rooms = `aaaaa-bbb-z-y-x-123[abxyz]${EOL}a-b-c-d-e-f-g-h-87[abcde]${EOL}`
   t.deepEqual(parseRooms(rooms), expected)
+})
+
+test('shiftCharacter', t => {
+  t.is(shiftCharacter('a', 1), 'b')
+  t.is(shiftCharacter('z', 1), 'a')
+  t.is(shiftCharacter('a', 183), 'b')
+  t.is(shiftCharacter('-'), ' ')
 })
 
 test('sumValidRooms', t => {

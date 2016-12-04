@@ -1,6 +1,20 @@
 const {EOL} = require('os')
 
 module.exports = {
+  decryptName(encryptedName, rotateTimes) {
+    return encryptedName.split('')
+      .map(letter => module.exports.shiftCharacter(letter, rotateTimes))
+      .join('')
+  },
+  getNorthSectorId(rooms) {
+    return module.exports.getValidRooms(rooms)
+      .map(({encryptedName, sectorId}) => ({
+        sectorId,
+        name: module.exports.decryptName(encryptedName, sectorId)
+      }))
+      .filter(room => room.name.includes('north'))
+      .map(({sectorId}) => sectorId)[0]
+  },
   parseRooms(rooms) {
     return rooms.split(EOL)
       .filter(str => str)
@@ -25,6 +39,24 @@ module.exports = {
 
       return mapping
     }, {})
+  },
+  shiftCharacter(character, rotateTimes) {
+    if (character === '-') {
+      return ' '
+    }
+
+    const aCharCode = 'a'.charCodeAt(0)
+    const zCharCode = 'z'.charCodeAt(0)
+
+    const charCode = character.charCodeAt(0)
+
+    const remainingRotates = rotateTimes % 26
+
+    if (charCode + remainingRotates > zCharCode) {
+      return String.fromCharCode(aCharCode + remainingRotates - (zCharCode - charCode + 1))
+    }
+
+    return String.fromCharCode(charCode + remainingRotates)
   },
   getValidRooms(rooms) {
     return module.exports.parseRooms(rooms)

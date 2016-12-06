@@ -27,6 +27,17 @@ module.exports = {
       return characterPosCount
     }, previousCharacterPosCount)
   },
+  getLeastPopularLetter(characterCountMap) {
+    return Object.keys(characterCountMap).reduce((currentBest, letter) => {
+      if (characterCountMap[letter] < currentBest.count) {
+        currentBest.letter = letter
+        currentBest.count = characterCountMap[letter]
+      }
+
+      return currentBest
+    }, {count: Infinity})
+    .letter
+  },
   getMessages(input) {
     return input
       .split(EOL)

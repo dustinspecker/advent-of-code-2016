@@ -2,7 +2,7 @@ const {EOL} = require('os')
 const m = require('.')
 const test = require('ava')
 
-const {getCorrectedMessage, getCharacterPosCount, getMessages, getMostPopularLetter} = m
+const {getCorrectedMessage, getCharacterPosCount, getLeastPopularLetter, getMessages, getMostPopularLetter} = m
 
 test('getCorrectedMessage', t => {
   const input = [
@@ -97,6 +97,10 @@ test('getCharacterPosCount handles next case', t => {
   }
 
   t.deepEqual(getCharacterPosCount('fedadn', previous), expected)
+})
+
+test('getLeastPopularLetter', t => {
+  t.is(getLeastPopularLetter({e: 3, a: 4}), 'e')
 })
 
 test('getMessages', t => {

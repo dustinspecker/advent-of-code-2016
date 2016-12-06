@@ -6,5 +6,5 @@ fs.readFile('./day06/input.txt', (err, data) => {
     throw err
   }
 
-  console.log(m.getCorrectedMessage(data.toString()))
+  console.log(m.getCorrectedMessage(data.toString(), m.getMostPopularLetter))
 })

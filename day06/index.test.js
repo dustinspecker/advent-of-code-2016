@@ -24,7 +24,7 @@ test('getCorrectedMessage', t => {
     'enarar'
   ].join(EOL)
 
-  t.is(getCorrectedMessage(input), 'easter')
+  t.is(getCorrectedMessage(input, getMostPopularLetter), 'easter')
 })
 
 test('getCharacterPosCount handles initial case', t => {

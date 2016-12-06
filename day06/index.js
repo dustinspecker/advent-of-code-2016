@@ -1,7 +1,7 @@
 const {EOL} = require('os')
 
 module.exports = {
-  getCorrectedMessage(input) {
+  getCorrectedMessage(input, characterPopularityPredicate) {
     const messages = module.exports.getMessages(input)
 
     const characterPosCount = messages.reduce((map, message) =>
@@ -9,7 +9,7 @@ module.exports = {
     , {})
 
     return Object.keys(characterPosCount).reduce((correctedMessage, index) =>
-      correctedMessage + module.exports.getMostPopularLetter(characterPosCount[index])
+      correctedMessage + characterPopularityPredicate(characterPosCount[index])
     , '')
   },
   getCharacterPosCount(string, previousCharacterPosCount) {

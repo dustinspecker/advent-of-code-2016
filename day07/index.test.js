@@ -2,7 +2,13 @@ const {EOL} = require('os')
 const m = require('.')
 const test = require('ava')
 
-const {getIPs, isABBA, ipSupportsTLS, numberOfIpsSupportingTLS, parseIp} = m
+const {
+  getIPs,
+  isABBA,
+  ipSupportsTLS,
+  numberOfIpsSupportingTLS,
+  parseIp
+} = m
 
 test('getIPs', t => {
   const input = `abba[mnop]qrst${EOL}abcd[bddb]xyyx${EOL}`

@@ -7,4 +7,5 @@ fs.readFile('./day07/input.txt', (err, data) => {
   }
 
   console.log(m.numberOfIpsSupportingTLS(data.toString()))
+  console.log(m.numberOfIpsSupportingSSL(data.toString()))
 })

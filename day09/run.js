@@ -6,5 +6,6 @@ fs.readFile('./day09/input.txt', (err, data) => {
     throw err
   }
 
-  console.log(m.decompress(data.toString()).length - 1)
+  console.log(m.decompress(data.toString()) - 1)
+  console.log(m.decompress(data.toString(), 2) - 1)
 })

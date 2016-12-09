@@ -61,6 +61,8 @@ module.exports = {
       }
     })
 
+    module.exports.printGrid(grid)
+
     return Object.keys(grid).reduce((total, key) => {
       if (grid[key] === '#') {
         return total + 1
@@ -68,6 +70,19 @@ module.exports = {
 
       return total
     }, 0)
+  },
+  printGrid(grid) {
+    for (let i = 0; i < 6; i++) {
+      let str = ''
+      for (let j = 0; j < 50; j++) {
+        str += grid[`x${j}y${i}`]
+        if (j % 5 === 4) {
+          str += '   '
+        }
+      }
+
+      console.log(`${str}${EOL}`)
+    }
   },
   rect(grid, width, height) {
     for (let i = 0; i < width; i++) {

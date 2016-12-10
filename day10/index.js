@@ -1,5 +1,7 @@
 const {EOL} = require('os')
 
+const allInstructionsDone = instructions => instructions.every(({done}) => done)
+
 module.exports = {
   giveValue(factory, value, {type, number}) {
     const key = `${type}${number}`
@@ -58,11 +60,12 @@ module.exports = {
     instructions.forEach(instruction => {
       if (instruction.type === 'value') {
         module.exports.giveValue(factory, instruction.value, instruction.to)
+        instruction.done = true
       }
     })
 
     /* eslint-disable no-constant-condition */
-    while (true) {
+    while (!allInstructionsDone(instructions)) {
       for (const instruction of instructions) {
         const key = `bot${instruction.bot}`
         if (instruction.type === 'gives' && factory[key] && factory[key].chips.length === 2) {
@@ -75,8 +78,12 @@ module.exports = {
           factory = newFactory
           module.exports.giveValue(factory, low, instruction.low)
           module.exports.giveValue(factory, high, instruction.high)
+
+          instruction.done = true
         }
       }
     }
+
+    return factory
   }
 }
